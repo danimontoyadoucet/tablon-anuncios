@@ -1,0 +1,15 @@
+# Credenciales y variables de entorno
+.env
+.env.local
+
+# Dependencias
+/vendor/
+/node_modules/
+
+# Logs y temporales
+*.log
+/storage/*.key
+
+# Configuración de IDEs
+.idea/
+.vscode/
