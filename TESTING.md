@@ -46,44 +46,44 @@ y se ejecutarán manualmente.
 ### Prueba 6. Crear publicación
 - Acción: Crear una publicación con datos válidos.
 - Resultado esperado: Aparece en el listado y en MySQL.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: Se crea y aparece en ambos sitios.
+- Estado: Superada.
 
 ### Prueba 7. Crear sin iniciar sesión
 - Acción: Acceder al formulario sin sesión.
 - Resultado esperado: Redirige al login.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: Redirige al login.
+- Estado: Superada.
 
 ### Prueba 8. Editar publicación propia
 - Acción: Modificar una publicación del usuario conectado.
 - Resultado esperado: Guarda los cambios.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: Se guardan los cambios modificados.
+- Estado: Superada.
 
 ### Prueba 9. Editar publicación ajena
 - Acción: Intentar editar una publicación de otro usuario.
 - Resultado esperado: Devuelve error 403.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: Aparece el mensaje "No tienes permiso para editar esta publicación" y no permite acceder al formulario de edición.
+- Estado: Superada.
 
 ### Prueba 10. Eliminar publicación propia
 - Acción: Eliminar una publicación del usuario conectado.
 - Resultado esperado: Desaparece del listado y MySQL.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: Publicación eliminada con éxito.
+- Estado: Superada.
 
 ### Prueba 11. Eliminar publicación ajena
 - Acción: Intentar eliminar mediante POST una publicación ajena.
 - Resultado esperado: Devuelve error 403 y no elimina nada.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: Devuelve el mensaje "No tienes permiso para eliminar esta publicación" y no se elimina nada.
+- Estado: Superada.
 
 ### Prueba 12. Buscar publicaciones
 - Acción: Buscar una publicación por título o categoría.
 - Resultado esperado: Solo aparecen las coincidencias.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: Aparecen bien las coincidencias al buscar por título o por categoría.
+- Estado: Superada.
 
 ## Pruebas de comentarios
 
