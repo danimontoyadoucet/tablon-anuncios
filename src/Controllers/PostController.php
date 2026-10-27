@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Post;
+use App\Models\Comment;
 
 class PostController
 {
@@ -39,6 +40,10 @@ class PostController
             echo "Publicación no encontrada";
             return;
         }
+
+        $comment = new Comment();
+
+        $comentarios = $comment->obtenerPorPublicacion($id);
 
         require __DIR__ . '/../Views/posts/show.php';
     }

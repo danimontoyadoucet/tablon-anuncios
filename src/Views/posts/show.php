@@ -59,6 +59,41 @@
     <?php endif; ?>
 
 
+<hr>
+
+    <h2>Comentarios</h2>
+
+    <?php if ($comentarios): ?>
+
+        <?php foreach ($comentarios as $comentario): ?>
+
+            <p>
+                <strong>
+                    <?= htmlspecialchars($comentario['autor'], ENT_QUOTES, 'UTF-8') ?>
+                </strong>
+            </p>
+
+            <p>
+                <?= nl2br(htmlspecialchars($comentario['contenido'], ENT_QUOTES, 'UTF-8')) ?>
+            </p>
+
+            <p>
+                Fecha:
+                <?= htmlspecialchars($comentario['fecha_comentario'], ENT_QUOTES, 'UTF-8') ?>
+            </p>
+
+            <hr>
+
+        <?php endforeach; ?>
+
+    <?php else: ?>
+
+        <p>Esta publicación todavía no tiene comentarios.</p>
+
+    <?php endif; ?>
+
+
+
 
     <a href="index.php?controller=post&action=index">
         Volver a publicaciones
