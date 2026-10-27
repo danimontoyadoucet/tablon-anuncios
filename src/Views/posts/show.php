@@ -93,6 +93,36 @@
     <?php endif; ?>
 
 
+    <?php if (isset($_SESSION['user_id'])): ?>
+
+        <h3>Añadir comentario</h3>
+
+        <form action="index.php?controller=comment&action=store" method="POST">
+
+            <input type="hidden" name="id_publicacion"
+               value="<?= (int) $publicacion['id_publicacion'] ?>">
+
+            <textarea name="contenido" required></textarea>
+
+            <br><br>
+
+            <button type="submit">Enviar comentario</button>
+
+        </form>
+
+    <?php else: ?>
+
+        <p>
+            <a href="index.php?controller=auth&action=showLoginForm">
+                Inicia sesión
+            </a>
+            para escribir un comentario.
+        </p>
+
+    <?php endif; ?>
+
+
+
 
 
     <a href="index.php?controller=post&action=index">

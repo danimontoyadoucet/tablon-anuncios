@@ -4,6 +4,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\AuthController;
 use App\Controllers\PostController;
+use App\Controllers\CommentController;
 
 session_start();
 
@@ -64,6 +65,21 @@ if ($controller == 'auth') {
         http_response_code(404);
         echo "Página no encontrada";
     }
+
+
+} elseif ($controller == 'comment') {
+
+    $commentController = new CommentController();
+
+    if ($action == 'store' && $_SERVER['REQUEST_METHOD'] == 'POST') {
+        $commentController->store();
+
+    } else {
+        http_response_code(404);
+        echo "Página no encontrada";
+    }
+
+
 
 } else {
 
