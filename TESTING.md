@@ -14,32 +14,32 @@ y se ejecutarán manualmente.
 ### Prueba 1. Registro correcto
 - Acción: Registrar un usuario con datos válidos.
 - Resultado esperado: Se guarda en MySQL y redirige al login.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: El usuario se guardó en MySQL y redirigió al login.
+- Estado: Superada.
 
 ### Prueba 2. Registro con email repetido
 - Acción: Registrar un usuario con un email existente.
 - Resultado esperado: Muestra un mensaje de error.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: Muestra el mensaje de error diciendo que el correo ya está registrado.
+- Estado: Superada.
 
 ### Prueba 3. Login correcto
 - Acción: Iniciar sesión con credenciales válidas.
 - Resultado esperado: Muestra el email del usuario.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: Se muestra correctamente el email del usuario introducido.
+- Estado: Superada.
 
 ### Prueba 4. Login incorrecto
 - Acción: Iniciar sesión con una contraseña incorrecta.
 - Resultado esperado: No inicia sesión y muestra un error.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: No inicia sesión y muestra el mensaje de error.
+- Estado: Superada.
 
 ### Prueba 5. Cerrar sesión
 - Acción: Pulsar el botón Cerrar sesión.
 - Resultado esperado: Se cierra la sesión.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: Se cierra la sesión correctamente.
+- Estado: Superada.
 
 ## Pruebas de publicaciones
 
