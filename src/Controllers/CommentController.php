@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
+use App\Core\Csrf;
 
 class CommentController
 {
@@ -16,6 +17,8 @@ class CommentController
 
     public function store()
     {
+        Csrf::validar();
+
         if (!isset($_SESSION['user_id'])) {
             header("Location: index.php?controller=auth&action=showLoginForm");
             exit;
