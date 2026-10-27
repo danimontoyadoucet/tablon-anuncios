@@ -3,6 +3,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\AuthController;
+use App\Controllers\PostController;
 
 session_start();
 
@@ -33,6 +34,31 @@ if ($controller == 'auth') {
         echo "Página no encontrada";
     }
 
+
+} elseif ($controller == 'post') {
+
+    $postController = new PostController();
+
+    if ($action == 'index') {
+        $postController->index();
+
+    } elseif ($action == 'show') {
+        $postController->show();
+
+    } elseif ($action == 'create') {
+        $postController->create();
+
+    } elseif ($action == 'store' && $_SERVER['REQUEST_METHOD'] == 'POST') {
+        $postController->store();
+
+    } else {
+        http_response_code(404);
+        echo "Página no encontrada";
+    }
+
+
+
+
 } else {
 
     echo "<h1>Tablón de anuncios</h1>";
@@ -52,4 +78,6 @@ if ($controller == 'auth') {
         echo '<a href="index.php?controller=auth&action=showRegisterForm">Registrarse</a>';
 
     }
+
+    echo '<p><a href="index.php?controller=post&action=index">Ver publicaciones</a></p>';
 }
