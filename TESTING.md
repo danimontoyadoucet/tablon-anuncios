@@ -104,17 +104,17 @@ y se ejecutarán manualmente.
 ### Prueba 15. Token CSRF incorrecto
 - Acción: Enviar un formulario POST con token incorrecto.
 - Resultado esperado: Error 403 y no modifica la BD.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: Aparece un mensaje de error:"Token CSRF no válido" y no se sube a la BD.
+- Estado: Superada.
 
 ### Prueba 16. Formulario vacío
 - Acción: Enviar una publicación sin título o contenido.
 - Resultado esperado: No permite guardar la publicación.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: No permite guardar la publicación sin rellenar los campos.
+- Estado: Superada.
 
 ### Prueba 17. Contenido HTML
 - Acción: Crear una publicación con etiquetas HTML.
 - Resultado esperado: Se muestran como texto, sin ejecutarse.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: Efectivamente se muestran las etiquetas como texto.
+- Estado: Superada.
