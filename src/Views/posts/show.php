@@ -34,6 +34,21 @@
 
     <hr>
 
+
+    <?php if (
+        isset($_SESSION['user_id']) &&
+        $_SESSION['user_id'] == $publicacion['id_usuario']
+    ):  ?>
+
+    <p>
+        <a href="index.php?controller=post&action=edit&id=<?= (int) $publicacion['id_publicacion'] ?>">
+            Editar publicación
+        </a>
+    </p>
+
+    <?php endif; ?>
+
+
     <a href="index.php?controller=post&action=index">
         Volver a publicaciones
     </a>

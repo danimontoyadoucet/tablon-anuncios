@@ -51,7 +51,14 @@ if ($controller == 'auth') {
     } elseif ($action == 'store' && $_SERVER['REQUEST_METHOD'] == 'POST') {
         $postController->store();
 
-    } else {
+    } elseif ($action == 'edit') {
+        $postController->edit();
+
+    } elseif ($action == 'update' && $_SERVER['REQUEST_METHOD'] == 'POST') {
+        $postController->update();
+
+    } 
+    else {
         http_response_code(404);
         echo "Página no encontrada";
     }

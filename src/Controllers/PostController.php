@@ -82,4 +82,88 @@ public function store()
     exit;
     }
 
+public function edit()
+{
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: index.php?controller=auth&action=showLoginForm");
+        exit;
+    }
+
+    $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+
+    if (!$id || $id < 1) {
+        http_response_code(400);
+        echo "ID no válido";
+        return;
+    }
+
+    $publicacion = $this->post->getById($id);
+
+    if (!$publicacion) {
+        http_response_code(404);
+        echo "Publicación no encontrada";
+        return;
+    }
+
+    if ($publicacion['id_usuario'] != $_SESSION['user_id']) {
+        http_response_code(403);
+        echo "No tienes permiso para editar esta publicación";
+        return;
+    }
+
+    $categorias = $this->post->obtenerCategorias();
+
+    require __DIR__ . '/../Views/posts/edit.php';
+}
+
+public function update()
+{
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: index.php?controller=auth&action=showLoginForm");
+        exit;
+    }
+
+    $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+
+    if (!$id || $id < 1) {
+        http_response_code(400);
+        echo "ID no válido";
+        return;
+    }
+
+    $publicacion = $this->post->getById($id);
+
+    if (!$publicacion) {
+        http_response_code(404);
+        echo "Publicación no encontrada";
+        return;
+    }
+
+    if ($publicacion['id_usuario'] != $_SESSION['user_id']) {
+        http_response_code(403);
+        echo "No tienes permiso para editar esta publicación";
+        return;
+    }
+
+    $titulo = trim($_POST['titulo'] ?? '');
+    $cuerpo = trim($_POST['cuerpo'] ?? '');
+    $id_categoria = (int) ($_POST['id_categoria'] ?? 0);
+
+    if ($titulo == '' || $cuerpo == '' || $id_categoria <= 0) {
+        echo "Todos los campos son obligatorios";
+        return;
+    }
+
+    $this->post->update($id, [
+        'titulo' => $titulo,
+        'cuerpo' => $cuerpo,
+        'id_categoria' => $id_categoria
+    ]);
+
+    header("Location: index.php?controller=post&action=show&id=" . $id);
+    exit;
+}
+
+
+
 }
