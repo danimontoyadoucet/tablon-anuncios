@@ -90,14 +90,14 @@ y se ejecutarán manualmente.
 ### Prueba 13. Añadir comentario
 - Acción: Comentar una publicación con sesión iniciada.
 - Resultado esperado: El comentario se guarda y aparece.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: Se guarda y aparece tanto en MySQL como en el anuncio mismo.
+- Estado: Superada.
 
 ### Prueba 14. Comentar sin sesión
 - Acción: Intentar comentar sin iniciar sesión.
 - Resultado esperado: Se impide la publicación del comentario.
-- Resultado obtenido: Pendiente.
-- Estado: Pendiente.
+- Resultado obtenido: No deja al usuario comentar y aparece el mensaje:"Inicia sesión para escrivir un comentario"
+- Estado: Superada.
 
 ## Pruebas de seguridad
 
