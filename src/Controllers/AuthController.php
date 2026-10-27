@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use App\Core\Csrf;
 
 class AuthController
 {
@@ -20,6 +21,8 @@ class AuthController
 
     public function register()
     {
+        Csrf::validar();
+
         $nombre = trim($_POST['nombre'] ?? '');
         $email = trim($_POST['email'] ?? '');
         $password = $_POST['password'] ?? '';
@@ -65,6 +68,8 @@ class AuthController
 
     public function login()
     {
+        Csrf::validar();
+
         $email = trim($_POST['email'] ?? '');
         $password = $_POST['password'] ?? '';
 
@@ -89,6 +94,8 @@ class AuthController
 
     public function logout()
     {
+        Csrf::validar();
+
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }

@@ -11,6 +11,9 @@
 
     <form action="index.php?controller=auth&action=login" method="POST">
 
+        <input type="hidden" name="csrf_token"
+               value="<?= htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8') ?>">
+
         <label>Email:</label>
         <input type="email" name="email" required>
         <br><br>
