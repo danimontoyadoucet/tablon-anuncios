@@ -2,13 +2,11 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use App\Core\Database;
+use App\Models\User;
 
-$db = new Database();
+$user = new User();
 
-$usuarios = $db->fetchAll("SELECT id_usuario, nombre FROM usuarios");
-
-echo "Conexion correcta a MySQL";
+$usuarios = $user->getAll();
 
 echo "<pre>";
 print_r($usuarios);
