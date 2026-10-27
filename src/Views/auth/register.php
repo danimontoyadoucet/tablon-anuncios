@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+</head>
+<body>
+
+    <h1>Registro de usuarios</h1>
+
+    <form action="index.php?controller=auth&action=register" method="POST">
+
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required>
+        <br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <br><br>
+
+        <label>Contraseña:</label>
+        <input type="password" name="password" required>
+        <br><br>
+
+        <button type="submit">Registrarse</button>
+
+    </form>
+
+    <p>
+        ¿Ya tienes cuenta?
+        <a href="index.php?controller=auth&action=showLoginForm">
+            Iniciar sesión
+        </a>
+    </p>
+
+</body>
+</html>

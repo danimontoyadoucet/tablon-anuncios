@@ -2,12 +2,54 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use App\Models\User;
+use App\Controllers\AuthController;
 
-$user = new User();
+session_start();
 
-$usuarios = $user->getAll();
+$controller = $_GET['controller'] ?? '';
+$action = $_GET['action'] ?? '';
 
-echo "<pre>";
-print_r($usuarios);
-echo "</pre>";
+if ($controller == 'auth') {
+
+    $auth = new AuthController();
+
+    if ($action == 'showRegisterForm') {
+        $auth->showRegisterForm();
+
+    } elseif ($action == 'register' && $_SERVER['REQUEST_METHOD'] == 'POST') {
+        $auth->register();
+
+    } elseif ($action == 'showLoginForm') {
+        $auth->showLoginForm();
+
+    } elseif ($action == 'login' && $_SERVER['REQUEST_METHOD'] == 'POST') {
+        $auth->login();
+
+    } elseif ($action == 'logout' && $_SERVER['REQUEST_METHOD'] == 'POST') {
+        $auth->logout();
+
+    } else {
+        http_response_code(404);
+        echo "Página no encontrada";
+    }
+
+} else {
+
+    echo "<h1>Tablón de anuncios</h1>";
+
+    if (isset($_SESSION['user_id'])) {
+
+        echo "<p>Bienvenido: " . htmlspecialchars($_SESSION['email'], ENT_QUOTES, 'UTF-8') . "</p>";
+
+        echo '<form action="index.php?controller=auth&action=logout" method="POST">
+                <button type="submit">Cerrar sesión</button>
+              </form>';
+
+    } else {
+
+        echo '<a href="index.php?controller=auth&action=showLoginForm">Iniciar sesión</a>';
+        echo " | ";
+        echo '<a href="index.php?controller=auth&action=showRegisterForm">Registrarse</a>';
+
+    }
+}
