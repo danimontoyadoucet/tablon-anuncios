@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Post;
+use App\Core\Csrf;
 use App\Models\Comment;
 
 class PostController
@@ -62,6 +63,8 @@ public function create()
 
 public function store()
 {
+    Csrf::validar();
+
     if (!isset($_SESSION['user_id'])) {
         header("Location: index.php?controller=auth&action=showLoginForm");
         exit;
@@ -123,6 +126,8 @@ public function edit()
 
 public function update()
 {
+    Csrf::validar();
+
     if (!isset($_SESSION['user_id'])) {
         header("Location: index.php?controller=auth&action=showLoginForm");
         exit;
@@ -171,6 +176,8 @@ public function update()
 
 public function destroy()
 {
+    Csrf::validar();
+
     if (!isset($_SESSION['user_id'])) {
         header("Location: index.php?controller=auth&action=showLoginForm");
         exit;

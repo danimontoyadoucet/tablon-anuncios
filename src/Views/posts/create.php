@@ -11,6 +11,11 @@
 
     <form action="index.php?controller=post&action=store" method="POST">
 
+
+        <input type="hidden" name="csrf_token"
+            value="<?= htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8') ?>">
+
+
         <label>Título:</label>
         <input type="text" name="titulo" required>
         <br><br>
