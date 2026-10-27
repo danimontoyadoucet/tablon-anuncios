@@ -164,6 +164,42 @@ public function update()
     exit;
 }
 
+public function destroy()
+{
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: index.php?controller=auth&action=showLoginForm");
+        exit;
+    }
+
+    $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+
+    if (!$id || $id < 1) {
+        http_response_code(400);
+        echo "ID no válido";
+        return;
+    }
+
+    $publicacion = $this->post->getById($id);
+
+    if (!$publicacion) {
+        http_response_code(404);
+        echo "Publicación no encontrada";
+        return;
+    }
+
+    if ($publicacion['id_usuario'] != $_SESSION['user_id']) {
+        http_response_code(403);
+        echo "No tienes permiso para eliminar esta publicación";
+        return;
+    }
+
+    $this->post->delete($id);
+
+    header("Location: index.php?controller=post&action=index");
+    exit;
+}
+
+
 
 
 }

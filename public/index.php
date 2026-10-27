@@ -35,7 +35,7 @@ if ($controller == 'auth') {
     }
 
 
-} elseif ($controller == 'post') {
+}  elseif ($controller == 'post') {
 
     $postController = new PostController();
 
@@ -57,14 +57,13 @@ if ($controller == 'auth') {
     } elseif ($action == 'update' && $_SERVER['REQUEST_METHOD'] == 'POST') {
         $postController->update();
 
-    } 
-    else {
+    } elseif ($action == 'destroy' && $_SERVER['REQUEST_METHOD'] == 'POST') {
+        $postController->destroy();
+
+    } else {
         http_response_code(404);
         echo "Página no encontrada";
     }
-
-
-
 
 } else {
 
